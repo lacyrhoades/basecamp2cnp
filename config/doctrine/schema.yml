@@ -1,0 +1,16 @@
+ioPerson:
+  columns:
+    name: string(255)
+    cnp_id: string(255)
+    basecamp_id: string(255)
+ioProject:
+  columns:
+    name: string(255)
+    cnp_id: string(255)
+    basecamp_id: string(255)
+ioTimeLog:
+  columns:
+    name: string(255)
+    cnp_id: string(255)
+    basecamp_id: string(255)
+
