@@ -1,16 +1,24 @@
-ioPerson:
+person:
   columns:
+    id: integer(4)
     name: string(255)
     cnp_id: string(255)
     basecamp_id: string(255)
-ioProject:
+project:
   columns:
+    id: integer(4)
     name: string(255)
     cnp_id: string(255)
     basecamp_id: string(255)
-ioTimeLog:
+timelog:
   columns:
+    id: integer(4)
     name: string(255)
     cnp_id: string(255)
     basecamp_id: string(255)
+    date: date
+    description: text
+    hours: integer(4)
+    person_id: integer(4)
+    project_id: integer(4)
 

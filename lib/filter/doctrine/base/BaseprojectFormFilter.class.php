@@ -1,30 +1,32 @@
 <?php
 
 /**
- * ioProject filter form base class.
+ * project filter form base class.
  *
  * @package    basecamp2cnp
  * @subpackage filter
  * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormFilterGeneratedTemplate.php 29570 2010-05-21 14:49:47Z Kris.Wallsmith $
  */
-abstract class BaseioProjectFormFilter extends BaseFormFilterDoctrine
+abstract class BaseprojectFormFilter extends BaseFormFilterDoctrine
 {
   public function setup()
   {
     $this->setWidgets(array(
+      'id'          => new sfWidgetFormFilterInput(),
       'name'        => new sfWidgetFormFilterInput(),
       'cnp_id'      => new sfWidgetFormFilterInput(),
       'basecamp_id' => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
+      'id'          => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'name'        => new sfValidatorPass(array('required' => false)),
       'cnp_id'      => new sfValidatorPass(array('required' => false)),
       'basecamp_id' => new sfValidatorPass(array('required' => false)),
     ));
 
-    $this->widgetSchema->setNameFormat('io_project_filters[%s]');
+    $this->widgetSchema->setNameFormat('project_filters[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -35,7 +37,7 @@ abstract class BaseioProjectFormFilter extends BaseFormFilterDoctrine
 
   public function getModelName()
   {
-    return 'ioProject';
+    return 'project';
   }
 
   public function getFields()
