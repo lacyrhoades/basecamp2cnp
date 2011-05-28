@@ -1,3 +1,5 @@
 /config/databases.yml
 /cache
 /data/sql
+/config/custom.php
+/todo.txt
