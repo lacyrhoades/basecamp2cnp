@@ -7,17 +7,17 @@ class Manager
   protected $_task = null;
   protected $_people = null;
   
-  public function __construct($basecampApi)
+  public function __construct(\Sirprize\Basecamp $basecampApi)
   {
     $this->_api = $basecampApi;
   }
   
-  public function setTask($task)
+  public function setTask(sfTask $task)
   {
     $this->_task = $task;
   }
   
-  public function updatePeople($peopleTable)
+  public function updatePeople(peopleTable $peopleTable)
   {
     $people = $this->getAllPeople();
     

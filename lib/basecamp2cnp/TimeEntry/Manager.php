@@ -18,7 +18,7 @@ class Manager
     $this->_task = $task;
   }
   
-  public function updateTimeEntries($timeEntryTable)
+  public function updateTimeEntries(timeEntryTable $timeEntryTable)
   {
     $timeEntries = $this->getAllTimeEntries();
     
