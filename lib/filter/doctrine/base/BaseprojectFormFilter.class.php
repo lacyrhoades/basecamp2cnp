@@ -13,14 +13,12 @@ abstract class BaseprojectFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id'          => new sfWidgetFormFilterInput(),
       'name'        => new sfWidgetFormFilterInput(),
       'cnp_id'      => new sfWidgetFormFilterInput(),
       'basecamp_id' => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
-      'id'          => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'name'        => new sfValidatorPass(array('required' => false)),
       'cnp_id'      => new sfValidatorPass(array('required' => false)),
       'basecamp_id' => new sfValidatorPass(array('required' => false)),

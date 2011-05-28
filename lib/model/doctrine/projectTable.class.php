@@ -7,13 +7,86 @@
  */
 class projectTable extends Doctrine_Table
 {
-    /**
-     * Returns an instance of this class.
-     *
-     * @return object projectTable
-     */
-    public static function getInstance()
+  protected $_task;
+  
+  public function addOrUpdateProject($project, sfTask $task = null)
+  {
+    $this->_task = $task;
+    
+    if ($this->projectExistsExactly($project))
     {
-        return Doctrine_Core::getTable('project');
+      return;
     }
+    
+    if ($existingProject = $this->projectExists($project))
+    {
+      $this->updateProject($existingProject, $project);
+      return;
+    }
+    
+    $this->addProject($project);
+  }
+  
+  private function projectExistsExactly($project)
+  {
+    $q = $this->createQuery('p')->where('p.basecamp_id = ?', $project->getId())
+      ->andWhere('p.name = ?', $project->getName());
+      
+    if ($q->count() > 0)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+  
+  private function projectExists($project)
+  {
+    $q = $this->createQuery('p')->where('p.basecamp_id = ?', $project->getId());
+    
+    if ($q->count() > 0)
+    {
+      return $q->fetchOne();
+    }
+    else
+    {
+      return false;
+    }
+  }
+  
+  private function addProject($basecampProject)
+  {
+    $project = new project();
+    
+    $this->_updateDatabaseRecordFromApiRecord($project, $basecampProject);
+    
+    $project->save();
+    
+    $this->logProgress(sprintf('New project added! "%s"', $project->name));
+  }
+  
+  private function updateProject($existingProject, $basecampProject)
+  {
+    $this->_updateDatabaseRecordFromApiRecord($existingProject, $basecampProject);
+    
+    $existingProject->save();
+    
+    $this->logProgress(sprintf('Updated existing project: "%s"', $existingProject->name));
+  }
+  
+  private function _updateDatabaseRecordFromApiRecord($dbRecord, $apiRecord)
+  {
+    $dbRecord->basecamp_id = $apiRecord->getId();
+    $dbRecord->name = $apiRecord->getName();
+  }
+  
+  private function logProgress($msg)
+  {
+    if ($this->_task)
+    {
+      $this->_task->logSection('projectTable', $msg);
+    }
+  }
 }

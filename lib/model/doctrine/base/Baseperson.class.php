@@ -9,15 +9,66 @@
  * @property string $name
  * @property string $cnp_id
  * @property string $basecamp_id
+ * @property string $client_id
+ * @property string $im_handle
+ * @property string $im_service
+ * @property string $phone_number_fax
+ * @property string $phone_number_home
+ * @property string $phone_number_mobile
+ * @property string $phone_number_office
+ * @property string $phone_number_office_ext
+ * @property string $title
+ * @property date $created_at
+ * @property date $updated_at
+ * @property string $uuid
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $company_id
+ * @property string $email_address
+ * @property string $avatar_url
  * 
- * @method integer getId()          Returns the current record's "id" value
- * @method string  getName()        Returns the current record's "name" value
- * @method string  getCnpId()       Returns the current record's "cnp_id" value
- * @method string  getBasecampId()  Returns the current record's "basecamp_id" value
- * @method person  setId()          Sets the current record's "id" value
- * @method person  setName()        Sets the current record's "name" value
- * @method person  setCnpId()       Sets the current record's "cnp_id" value
- * @method person  setBasecampId()  Sets the current record's "basecamp_id" value
+ * @method integer getId()                      Returns the current record's "id" value
+ * @method string  getName()                    Returns the current record's "name" value
+ * @method string  getCnpId()                   Returns the current record's "cnp_id" value
+ * @method string  getBasecampId()              Returns the current record's "basecamp_id" value
+ * @method string  getClientId()                Returns the current record's "client_id" value
+ * @method string  getImHandle()                Returns the current record's "im_handle" value
+ * @method string  getImService()               Returns the current record's "im_service" value
+ * @method string  getPhoneNumberFax()          Returns the current record's "phone_number_fax" value
+ * @method string  getPhoneNumberHome()         Returns the current record's "phone_number_home" value
+ * @method string  getPhoneNumberMobile()       Returns the current record's "phone_number_mobile" value
+ * @method string  getPhoneNumberOffice()       Returns the current record's "phone_number_office" value
+ * @method string  getPhoneNumberOfficeExt()    Returns the current record's "phone_number_office_ext" value
+ * @method string  getTitle()                   Returns the current record's "title" value
+ * @method date    getCreatedAt()               Returns the current record's "created_at" value
+ * @method date    getUpdatedAt()               Returns the current record's "updated_at" value
+ * @method string  getUuid()                    Returns the current record's "uuid" value
+ * @method string  getFirstName()               Returns the current record's "first_name" value
+ * @method string  getLastName()                Returns the current record's "last_name" value
+ * @method string  getCompanyId()               Returns the current record's "company_id" value
+ * @method string  getEmailAddress()            Returns the current record's "email_address" value
+ * @method string  getAvatarUrl()               Returns the current record's "avatar_url" value
+ * @method person  setId()                      Sets the current record's "id" value
+ * @method person  setName()                    Sets the current record's "name" value
+ * @method person  setCnpId()                   Sets the current record's "cnp_id" value
+ * @method person  setBasecampId()              Sets the current record's "basecamp_id" value
+ * @method person  setClientId()                Sets the current record's "client_id" value
+ * @method person  setImHandle()                Sets the current record's "im_handle" value
+ * @method person  setImService()               Sets the current record's "im_service" value
+ * @method person  setPhoneNumberFax()          Sets the current record's "phone_number_fax" value
+ * @method person  setPhoneNumberHome()         Sets the current record's "phone_number_home" value
+ * @method person  setPhoneNumberMobile()       Sets the current record's "phone_number_mobile" value
+ * @method person  setPhoneNumberOffice()       Sets the current record's "phone_number_office" value
+ * @method person  setPhoneNumberOfficeExt()    Sets the current record's "phone_number_office_ext" value
+ * @method person  setTitle()                   Sets the current record's "title" value
+ * @method person  setCreatedAt()               Sets the current record's "created_at" value
+ * @method person  setUpdatedAt()               Sets the current record's "updated_at" value
+ * @method person  setUuid()                    Sets the current record's "uuid" value
+ * @method person  setFirstName()               Sets the current record's "first_name" value
+ * @method person  setLastName()                Sets the current record's "last_name" value
+ * @method person  setCompanyId()               Sets the current record's "company_id" value
+ * @method person  setEmailAddress()            Sets the current record's "email_address" value
+ * @method person  setAvatarUrl()               Sets the current record's "avatar_url" value
  * 
  * @package    basecamp2cnp
  * @subpackage model
@@ -31,6 +82,8 @@ abstract class Baseperson extends sfDoctrineRecord
         $this->setTableName('person');
         $this->hasColumn('id', 'integer', 4, array(
              'type' => 'integer',
+             'primary' => true,
+             'autoincrement' => true,
              'length' => 4,
              ));
         $this->hasColumn('name', 'string', 255, array(
@@ -42,6 +95,72 @@ abstract class Baseperson extends sfDoctrineRecord
              'length' => 255,
              ));
         $this->hasColumn('basecamp_id', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('client_id', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('im_handle', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('im_service', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('phone_number_fax', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('phone_number_home', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('phone_number_mobile', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('phone_number_office', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('phone_number_office_ext', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('title', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('created_at', 'date', null, array(
+             'type' => 'date',
+             ));
+        $this->hasColumn('updated_at', 'date', null, array(
+             'type' => 'date',
+             ));
+        $this->hasColumn('uuid', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('first_name', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('last_name', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('company_id', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('email_address', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('avatar_url', 'string', 255, array(
              'type' => 'string',
              'length' => 255,
              ));

@@ -1,19 +1,46 @@
 person:
   columns:
-    id: integer(4)
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
     name: string(255)
     cnp_id: string(255)
     basecamp_id: string(255)
+    client_id: string(255)
+    im_handle: string(255)
+    im_service: string(255)
+    phone_number_fax: string(255)
+    phone_number_home: string(255)
+    phone_number_mobile: string(255)
+    phone_number_office: string(255)
+    phone_number_office_ext: string(255)
+    title: string(255)
+    created_at: date
+    updated_at: date
+    uuid: string(255)
+    first_name: string(255)
+    last_name: string(255)
+    company_id: string(255)
+    email_address: string(255)
+    avatar_url: string(255)
+
 project:
   columns:
-    id: integer(4)
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
     name: string(255)
     cnp_id: string(255)
     basecamp_id: string(255)
-timelog:
+
+timeEntry:
   columns:
-    id: integer(4)
-    name: string(255)
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
     cnp_id: string(255)
     basecamp_id: string(255)
     date: date

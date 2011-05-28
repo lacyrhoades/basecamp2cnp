@@ -12,4 +12,15 @@
  */
 class person extends Baseperson
 {
+  public function setFirstName($str)
+  {
+    $this->_set('first_name', $str);
+    $this->name = sprintf('%s %s', $str, $this->getLastName());
+  }
+  
+  public function setLastName($str)
+  {
+    $this->_set('last_name', $str);
+    $this->name = sprintf('%s %s', $this->getFirstName(), $str);
+  }
 }

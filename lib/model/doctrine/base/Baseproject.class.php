@@ -31,6 +31,8 @@ abstract class Baseproject extends sfDoctrineRecord
         $this->setTableName('project');
         $this->hasColumn('id', 'integer', 4, array(
              'type' => 'integer',
+             'primary' => true,
+             'autoincrement' => true,
              'length' => 4,
              ));
         $this->hasColumn('name', 'string', 255, array(
