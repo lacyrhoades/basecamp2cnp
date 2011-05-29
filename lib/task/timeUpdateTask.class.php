@@ -41,6 +41,9 @@ EOF;
     // grab the local table for projects
     $projectsTable = Doctrine::getTable('project');
     
+    // get the project data provider service
+    $projectManager = new \basecamp2cnp\Project\Manager($basecampApi);
+    
     // grab all the projects from the table
     $projects = $projectManager->getAllProjectsFromDatabase($projectsTable);
     
