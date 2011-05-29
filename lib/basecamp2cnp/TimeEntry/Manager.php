@@ -13,12 +13,12 @@ class Manager
     $this->_project_id = $basecampProject->getId();
   }
   
-  public function setTask($task)
+  public function setTask(\sfTask $task)
   {
     $this->_task = $task;
   }
   
-  public function updateTimeEntries(timeEntryTable $timeEntryTable)
+  public function updateTimeEntries(\timeEntryTable $timeEntryTable)
   {
     $timeEntries = $this->getAllTimeEntries();
     

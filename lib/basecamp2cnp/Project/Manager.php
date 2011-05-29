@@ -12,12 +12,12 @@ class Manager
     $this->_api = $basecampApi;
   }
   
-  public function setTask(sfTask $task)
+  public function setTask(\sfTask $task)
   {
     $this->_task = $task;
   }
   
-  public function updateProjects(projectTable $projectTable)
+  public function updateProjects(\projectTable $projectTable)
   {
     $projects = $this->getAllProjects();
     
