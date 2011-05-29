@@ -19,7 +19,7 @@ class Manager
   
   public function updateProjects(\projectTable $projectTable)
   {
-    $projects = $this->getAllProjects();
+    $projects = $this->getAllProjectsFromApi();
     
     $this->logProgress(sprintf('Found %s projects, looking for updates..', count($projects)));
     
@@ -29,7 +29,7 @@ class Manager
     }
   }
   
-  public function getAllProjects()
+  public function getAllProjectsFromApi()
   {
     if (!$this->_projects)
     {
@@ -37,6 +37,13 @@ class Manager
     }
     
     return $this->_projects;
+  }
+  
+  public function getAllProjectsFromDatabase($table)
+  {
+    $q = $table->createQuery('p');
+    
+    return $q->execute();
   }
   
   private function logProgress($msg)

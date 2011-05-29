@@ -7,10 +7,10 @@ class Manager
   protected $_task = null;
   protected $_timeEntries = null;
   
-  public function __construct(\Sirprize\Basecamp $basecampApi, \Sirprize\Basecamp\Project\Entity $basecampProject)
+  public function __construct(\Sirprize\Basecamp $basecampApi, $basecampProjectId)
   {
     $this->_api = $basecampApi;
-    $this->_project_id = $basecampProject->getId();
+    $this->_project_id = $basecampProjectId;
   }
   
   public function setTask(\sfTask $task)
@@ -20,7 +20,7 @@ class Manager
   
   public function updateTimeEntries(\timeEntryTable $timeEntryTable)
   {
-    $timeEntries = $this->getAllTimeEntries();
+    $timeEntries = $this->getAllTimeEntriesFromApi();
     
     $this->logProgress(sprintf('Found %s time entries, looking for updates..', count($timeEntries)));
     
@@ -30,7 +30,7 @@ class Manager
     }
   }
   
-  public function getAllTimeEntries()
+  public function getAllTimeEntriesFromApi()
   {
     if (!$this->_timeEntries)
     {

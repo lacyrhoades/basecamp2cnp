@@ -19,7 +19,7 @@ class Manager
   
   public function updatePeople(\personTable $peopleTable)
   {
-    $people = $this->getAllPeople();
+    $people = $this->getAllPeopleFromApi();
     
     $this->logProgress(sprintf('Found %s people, looking for updates..', count($people)));
     
@@ -29,7 +29,7 @@ class Manager
     }
   }
   
-  public function getAllPeople()
+  public function getAllPeopleFromApi()
   {
     if (!$this->_people)
     {

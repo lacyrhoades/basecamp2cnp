@@ -56,13 +56,15 @@ EOF;
     $peopleManager->updatePeople($peopleTable);
     
     
-    $projects = $projectManager->getAllProjects();
+    $projectsTable = Doctrine::getTable('project');
+    
+    $projects = $projectManager->getAllProjectsFromDatabase($projectsTable);
     
     foreach ($projects as $project)
     {
       $this->logSection('execute', sprintf('Updating time for Project: %s', $project->getName()));
       
-      $timeManager = new \basecamp2cnp\TimeEntry\Manager($basecampApi, $project);
+      $timeManager = new \basecamp2cnp\TimeEntry\Manager($basecampApi, $project->getBasecampId());
       
       $timeManager->setTask($this);
       
