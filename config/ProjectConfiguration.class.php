@@ -19,6 +19,7 @@ class ProjectConfiguration extends sfProjectConfiguration
   private function registerBasecampApi()
   {
     require_once sfConfig::get('sf_lib_dir').'/vendor/Sirprize/Basecamp.php';
+    require_once sfConfig::get('sf_lib_dir').'/vendor/Sirprize/Basecamp/Id.php';
   }
   
   private function registerZend()

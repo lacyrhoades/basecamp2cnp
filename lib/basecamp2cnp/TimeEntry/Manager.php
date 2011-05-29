@@ -7,7 +7,7 @@ class Manager
   protected $_task = null;
   protected $_timeEntries = null;
   
-  public function __construct(\Sirprize\Basecamp $basecampApi, $basecampProjectId)
+  public function __construct(\Sirprize\Basecamp $basecampApi, \Sirprize\Basecamp\Id $basecampProjectId)
   {
     $this->_api = $basecampApi;
     $this->_project_id = $basecampProjectId;

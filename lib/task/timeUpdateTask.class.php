@@ -53,8 +53,11 @@ EOF;
       // report that we're updating entries for a certain project
       $this->logSection('execute', sprintf('Updating time for Project: %s', $project->getName()));
       
+      // create an id object for this basecamp entry
+      $id = new \Sirprize\Basecamp\Id($project->getBasecampId());
+      
       // create a manager object for this project, by id
-      $timeManager = new \basecamp2cnp\TimeEntry\Manager($basecampApi, $project->getBasecampId());
+      $timeManager = new \basecamp2cnp\TimeEntry\Manager($basecampApi, $id);
       
       // set the task so we get feedback over stdout
       $timeManager->setTask($this);
