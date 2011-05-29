@@ -38,7 +38,7 @@ class ProjectConfiguration extends sfProjectConfiguration
   private function registerBasecamp2Cnp()
   {
     require_once sfConfig::get('sf_lib_dir').'/basecamp2cnp/Project/Manager.php';
-    require_once sfConfig::get('sf_lib_dir').'/basecamp2cnp/People/Manager.php';
+    require_once sfConfig::get('sf_lib_dir').'/basecamp2cnp/Person/Manager.php';
     require_once sfConfig::get('sf_lib_dir').'/basecamp2cnp/TimeEntry/Manager.php';
   }
 }
