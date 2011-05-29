@@ -1,0 +1,9 @@
+<?php
+
+$config =  array(
+  'baseUri' => 'https://xyz.basecamphq.com',
+  'username' => 'Xyz User',
+  'password' => 'XYZ-PASSWORD'
+);
+
+sfConfig::set('basecamp_config', $config);
