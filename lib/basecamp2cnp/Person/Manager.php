@@ -1,5 +1,5 @@
 <?php
-namespace basecamp2cnp\People;
+namespace basecamp2cnp\Person;
 
 class Manager
 {
@@ -17,7 +17,7 @@ class Manager
     $this->_task = $task;
   }
   
-  public function updatePeople(\personTable $peopleTable)
+  public function updatePeople(\personTable $personTable)
   {
     $people = $this->getAllPeopleFromApi();
     
@@ -25,7 +25,7 @@ class Manager
     
     foreach ($people as $person)
     {
-      $peopleTable->addOrUpdatePerson($person, $this->_task);
+      $personTable->addOrUpdatePerson($person, $this->_task);
     }
   }
   
@@ -43,7 +43,7 @@ class Manager
   {
     if ($this->_task)
     {
-      $this->_task->logSection('People\Manager', $msg);
+      $this->_task->logSection('Person\Manager', $msg);
     }
   }
 }
