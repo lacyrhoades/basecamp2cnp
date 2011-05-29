@@ -31,7 +31,7 @@ abstract class BasetimeEntryForm extends BaseFormDoctrine
       'basecamp_id' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'date'        => new sfValidatorDate(array('required' => false)),
       'description' => new sfValidatorPass(array('required' => false)),
-      'hours'       => new sfValidatorInteger(array('required' => false)),
+      'hours'       => new sfValidatorNumber(array('required' => false)),
       'person_id'   => new sfValidatorInteger(array('required' => false)),
       'project_id'  => new sfValidatorInteger(array('required' => false)),
     ));

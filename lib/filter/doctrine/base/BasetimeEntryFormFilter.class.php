@@ -27,7 +27,7 @@ abstract class BasetimeEntryFormFilter extends BaseFormFilterDoctrine
       'basecamp_id' => new sfValidatorPass(array('required' => false)),
       'date'        => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDateTime(array('required' => false)))),
       'description' => new sfValidatorPass(array('required' => false)),
-      'hours'       => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'hours'       => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
       'person_id'   => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'project_id'  => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));

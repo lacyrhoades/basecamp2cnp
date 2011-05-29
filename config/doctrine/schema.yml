@@ -45,7 +45,7 @@ timeEntry:
     basecamp_id: string(255)
     date: date
     description: text
-    hours: integer(4)
+    hours: float
     person_id: integer(4)
     project_id: integer(4)
 

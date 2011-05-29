@@ -10,7 +10,7 @@
  * @property string $basecamp_id
  * @property date $date
  * @property text $description
- * @property integer $hours
+ * @property float $hours
  * @property integer $person_id
  * @property integer $project_id
  * 
@@ -19,7 +19,7 @@
  * @method string    getBasecampId()  Returns the current record's "basecamp_id" value
  * @method date      getDate()        Returns the current record's "date" value
  * @method text      getDescription() Returns the current record's "description" value
- * @method integer   getHours()       Returns the current record's "hours" value
+ * @method float     getHours()       Returns the current record's "hours" value
  * @method integer   getPersonId()    Returns the current record's "person_id" value
  * @method integer   getProjectId()   Returns the current record's "project_id" value
  * @method timeEntry setId()          Sets the current record's "id" value
@@ -61,9 +61,8 @@ abstract class BasetimeEntry extends sfDoctrineRecord
         $this->hasColumn('description', 'text', null, array(
              'type' => 'text',
              ));
-        $this->hasColumn('hours', 'integer', 4, array(
-             'type' => 'integer',
-             'length' => 4,
+        $this->hasColumn('hours', 'float', null, array(
+             'type' => 'float',
              ));
         $this->hasColumn('person_id', 'integer', 4, array(
              'type' => 'integer',
