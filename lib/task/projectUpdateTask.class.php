@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * task for pulling "projects" from the Basecamp API to the local database
+ */
 class projectUpdateTask extends sfBaseTask
 {
   protected function configure()
@@ -20,10 +23,11 @@ class projectUpdateTask extends sfBaseTask
     $this->name             = 'project-update';
     $this->briefDescription = '';
     $this->detailedDescription = <<<EOF
-The [ioProjectUpdate|INFO] task does things.
+The [project-update|INFO] task pulls project objects from the API and puts
+them in the local databse.
 Call it with:
 
-  [php symfony ioProjectUpdate|INFO]
+  [php symfony cron:project-update|INFO]
 EOF;
   }
 
@@ -33,53 +37,22 @@ EOF;
     $databaseManager = new sfDatabaseManager($this->configuration);
     $connection = $databaseManager->getDatabase($options['connection'])->getConnection();
 
-    $config = $this->getBasecampConfigArray();
-    
+    // setup the Basecamp connection
+    $config = sfConfig::get('basecamp_config', array());
     $basecampApi = new \Sirprize\Basecamp($config);
     
     
+    // grab a "project" manager service
     $projectManager = new \basecamp2cnp\Project\Manager($basecampApi);
     
+    // set the task so we get feedback over stdout
     $projectManager->setTask($this);
     
+    // get the project database table
     $projectTable = Doctrine::getTable('project');
     
+    // call the update method, get to work
     $projectManager->updateProjects($projectTable);
-    
-    
-    $peopleManager = new \basecamp2cnp\People\Manager($basecampApi);
-    
-    $peopleManager->setTask($this);
-    
-    $peopleTable = Doctrine::getTable('person');
-    
-    $peopleManager->updatePeople($peopleTable);
-    
-    
-    $projectsTable = Doctrine::getTable('project');
-    
-    $projects = $projectManager->getAllProjectsFromDatabase($projectsTable);
-    
-    foreach ($projects as $project)
-    {
-      $this->logSection('execute', sprintf('Updating time for Project: %s', $project->getName()));
-      
-      $timeManager = new \basecamp2cnp\TimeEntry\Manager($basecampApi, $project->getBasecampId());
-      
-      $timeManager->setTask($this);
-      
-      $timeEntryTable = Doctrine::getTable('timeEntry');
-      
-      $timeManager->updateTimeEntries($timeEntryTable);
-    }
   }
   
-  private function getBasecampConfigArray()
-  {
-    return array(
-      'baseUri' => sfConfig::get('basecamp_baseUri', null),
-      'username' => sfConfig::get('basecamp_username', null),
-      'password' => sfConfig::get('basecamp_password', null)
-    );
-  }
 }
