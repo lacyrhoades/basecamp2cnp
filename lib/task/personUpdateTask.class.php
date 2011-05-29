@@ -54,6 +54,6 @@ EOF;
     $personTable = Doctrine::getTable('person');
 
     // call the update person method, passing the person table.
-    $personManager->updatePerson($personTable);
+    $personManager->updatePeople($personTable);
   }
 }
