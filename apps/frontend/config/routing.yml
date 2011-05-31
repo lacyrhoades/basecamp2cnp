@@ -1,3 +1,30 @@
+timeentry:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                timeentry
+    module:               timeentry
+    prefix_path:          /timeentry
+    column:               id
+    with_wildcard_routes: true
+
+person:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                person
+    module:               person
+    prefix_path:          /person
+    column:               id
+    with_wildcard_routes: true
+
+project:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                project
+    module:               project
+    prefix_path:          /project
+    column:               id
+    with_wildcard_routes: true
+
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
