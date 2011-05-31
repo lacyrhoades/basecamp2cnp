@@ -43,7 +43,7 @@ EOF;
     
     
     // grab a "project" manager service
-    $projectManager = new \basecamp2cnp\Project\Manager($basecampApi);
+    $projectManager = new \basecamp\Project\Manager($basecampApi);
     
     // set the task so we get feedback over stdout
     $projectManager->setTask($this);

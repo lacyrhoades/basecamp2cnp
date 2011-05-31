@@ -11,7 +11,7 @@ class ProjectConfiguration extends sfProjectConfiguration
     
     $this->registerBasecampApi();
     $this->registerZend();
-    $this->registerBasecamp2Cnp();
+    $this->registerBasecamp();
     
     require_once dirname(__FILE__).'/custom.php';
   }
@@ -36,10 +36,10 @@ class ProjectConfiguration extends sfProjectConfiguration
     require_once sfConfig::get('sf_lib_dir').'/vendor/Zend/Loader/Autoloader.php';
   }
   
-  private function registerBasecamp2Cnp()
+  private function registerBasecamp()
   {
-    require_once sfConfig::get('sf_lib_dir').'/basecamp2cnp/Project/Manager.php';
-    require_once sfConfig::get('sf_lib_dir').'/basecamp2cnp/Person/Manager.php';
-    require_once sfConfig::get('sf_lib_dir').'/basecamp2cnp/TimeEntry/Manager.php';
+    require_once sfConfig::get('sf_lib_dir').'/basecamp/Project/Manager.php';
+    require_once sfConfig::get('sf_lib_dir').'/basecamp/Person/Manager.php';
+    require_once sfConfig::get('sf_lib_dir').'/basecamp/TimeEntry/Manager.php';
   }
 }

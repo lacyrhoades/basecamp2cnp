@@ -45,7 +45,7 @@ EOF;
 
 
     // grab the person managing service
-    $personManager = new \basecamp2cnp\Person\Manager($basecampApi);
+    $personManager = new \basecamp\Person\Manager($basecampApi);
 
     // set the task so we can have logging feedback to stdout
     $personManager->setTask($this);

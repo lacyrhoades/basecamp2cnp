@@ -42,7 +42,7 @@ EOF;
     $projectsTable = Doctrine::getTable('project');
     
     // get the project data provider service
-    $projectManager = new \basecamp2cnp\Project\Manager($basecampApi);
+    $projectManager = new \basecamp\Project\Manager($basecampApi);
     
     // grab all the projects from the table
     $projects = $projectManager->getAllProjectsFromDatabase($projectsTable);
@@ -60,7 +60,7 @@ EOF;
       $id = new \Sirprize\Basecamp\Id($project->getBasecampId());
       
       // create a manager object for this project, by id
-      $timeManager = new \basecamp2cnp\TimeEntry\Manager($basecampApi, $id);
+      $timeManager = new \basecamp\TimeEntry\Manager($basecampApi, $id);
       
       // set the task so we get feedback over stdout
       $timeManager->setTask($this);

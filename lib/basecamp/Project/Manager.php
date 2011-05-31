@@ -1,5 +1,5 @@
 <?php
-namespace basecamp2cnp\Project;
+namespace basecamp\Project;
 
 class Manager
 {

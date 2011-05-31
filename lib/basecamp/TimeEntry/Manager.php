@@ -1,5 +1,5 @@
 <?php
-namespace basecamp2cnp\TimeEntry;
+namespace basecamp\TimeEntry;
 
 class Manager
 {
