@@ -12,4 +12,27 @@
  */
 class timeEntry extends BasetimeEntry
 {
+  public function getPersonDbId()
+  {
+    $object = Doctrine::getTable('person')->findOneByBasecampId($this->getPersonId());
+    
+    if (!$object)
+    {
+      return 0;
+    }
+    
+    return $object->getId();
+  }
+
+  public function getProjectDbId()
+  {
+    $object = Doctrine::getTable('project')->findOneByBasecampId($this->getProjectId());
+    
+    if (!$object)
+    {
+      return 0;
+    }
+    
+    return $object->getId();
+  }
 }
